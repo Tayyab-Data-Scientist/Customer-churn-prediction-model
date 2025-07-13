@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e7f4e4;
+            border: 1px solid #d0e9d3;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <h1>Customer Churn Prediction</h1>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="tenure_months">Tenure (Months):</label>
+                <input type="number" id="tenure_months" name="tenure_months" required>
+            </div>
+            <div class="form-group">
+                <label for="monthly_charges">Monthly Charges:</label>
+                <input type="number" step="0.01" id="monthly_charges" name="monthly_charges" required>
+            </div>
+            <div class="form-group">
+                <label for="city_encoded">City Encoded:</label>
+                <input type="number" id="city_encoded" name="city_encoded" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender (0: Female, 1: Male):</label>
+                <input type="number" id="gender" name="gender" required>
+            </div>
+            <div class="form-group">
+                <label for="senior_citizen">Senior Citizen (0: No, 1: Yes):</label>
+                <input type="number" id="senior_citizen" name="senior_citizen" required>
+            </div>
+            <div class="form-group">
+                <label for="partner">Partner (0: No, 1: Yes):</label>
+                <input type="number" id="partner" name="partner" required>
+            </div>
+            <div class="form-group">
+                <label for="dependents">Dependents (0: No, 1: Yes):</label>
+                <input type="number" id="dependents" name="dependents" required>
+            </div>
+            <div class="form-group">
+                <label for="multiple_lines">Multiple Lines (0: No, 1: Yes, 2: No phone service):</label>
+                <input type="number" id="multiple_lines" name="multiple_lines" required>
+            </div>
+            <div class="form-group">
+                <label for="internet_service">Internet Service (0: No, 1: DSL, 2: Fiber optic):</label>
+                <input type="number" id="internet_service" name="internet_service" required>
+            </div>
+            <div class="form-group">
+                <label for="online_security">Online Security (0: No, 1: Yes, 2: No internet service):</label>
+                <input type="number" id="online_security" name="online_security" required>
+            </div>
+            <div class="form-group">
+                <label for="online_backup">Online Backup (0: No, 1: Yes, 2: No internet service):</label>
+                <input type="number" id="online_backup" name="online_backup" required>
+            </div>
+            <div class="form-group">
+                <label for="tech_support">Tech Support (0: No, 1: Yes, 2: No internet service):</label>
+                <input type="number" id="tech_support" name="tech_support" required>
+            </div>
+            <div class="form-group">
+                <label for="streaming_tv">Streaming TV (0: No, 1: Yes, 2: No internet service):</label>
+                <input type="number" id="streaming_tv" name="streaming_tv" required>
+            </div>
+            <div class="form-group">
+                <label for="streaming_movies">Streaming Movies (0: No, 1: Yes, 2: No internet service):</label>
+                <input type="number" id="streaming_movies" name="streaming_movies" required>
+            </div>
+            <div class="form-group">
+                <label for="contract_type">Contract Type (0: Month-to-month, 1: One year, 2: Two year):</label>
+                <input type="number" id="contract_type" name="contract_type" required>
+            </div>
+            <div class="form-group">
+                <label for="payment_method">Payment Method (0: Bank transfer, 1: Credit card, 2: Electronic check, 3: Mailed check):</label>
+                <input type="number" id="payment_method" name="payment_method" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Predict Churn</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <h3>Prediction Result: {{ prediction }}</h
+         <!-- {% endif %} here -->
