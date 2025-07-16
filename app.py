@@ -8,8 +8,12 @@ app = Flask(__name__)
 
 # Load the trained model
 model = None
-with open('churn_predictor.pkl', 'rb') as f:
-    model = pickle.load(f)
+model_path = 'churn_predictor.pkl'
+if os.path.exists(model_path):
+    with open(model_path, 'rb') as f:
+        model = pickle.load(f)
+else:
+    raise FileNotFoundError(f"Model file '{model_path}' not found!")
 
 # Route for the homepage
 @app.route('/')
@@ -51,6 +55,6 @@ def predict():
     except Exception as e:
         return render_template('index.html', prediction=f"Error: {str(e)}")
 
-# Run the app
+# Run the app on Replit
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=3000)
