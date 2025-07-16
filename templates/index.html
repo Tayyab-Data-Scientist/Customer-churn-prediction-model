@@ -85,18 +85,15 @@
                 <label for="gender">Gender (0: Female, 1: Male):</label>
                 <input type="number" id="gender" name="gender" required>
             </div>
-            <!-- More fields similar to above -->
-
-            <button type="submit" class="submit-btn">Predict Churn</button>
-        </form>
-
-        {% if prediction %}
-            <div class="result">
-                <h3>Prediction Result: {{ prediction }}</h3>
+            <div class="form-group">
+                <label for="senior_citizen">Senior Citizen (0: No, 1: Yes):</label>
+                <input type="number" id="senior_citizen" name="senior_citizen" required>
             </div>
-        {% endif %}
-    </div>
-</div>
+            <div class="form-group">
+                <label for="partner">Partner (0: No, 1: Yes):</label>
+                <input type="number" id="partner" name="partner" required>
+            </div>
+            <div class="form-group">
+                <label for="dependents">Dependents (0: No, 1: Yes):</label>
+                <input type="number" id="dependents" name="dependents" requi
 
-</body>
-</html>
